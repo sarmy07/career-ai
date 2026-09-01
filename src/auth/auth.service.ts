@@ -70,6 +70,14 @@ export class AuthService {
     };
   }
 
+  async logout(userId: string) {
+    await this.userService.update(userId, { refreshToken: null });
+
+    return {
+      message: 'user logot success',
+    };
+  }
+
   async generateTokens(user: User) {
     const payload = {
       id: user.id,
@@ -94,7 +102,7 @@ export class AuthService {
     };
   }
 
-  async refreshToken(dto: RefreshTokenDto) {
+  async refreshTokens(dto: RefreshTokenDto) {
     const payload = await this.jwtService.verifyAsync(dto.refreshToken, {
       secret: this.authConfiguration.refresh_secret,
     });

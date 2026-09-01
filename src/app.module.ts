@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { dataSourceOptions } from 'db/data-source';
 import { validation } from './config/validation.schema';
 import { UsersModule } from './users/users.module';
+import { ResumeModule } from './resume/resume.module';
 import authConfig from './auth/config/auth.config';
 
 @Module({
@@ -19,6 +20,7 @@ import authConfig from './auth/config/auth.config';
     TypeOrmModule.forRoot(dataSourceOptions),
     AuthModule,
     UsersModule,
+    ResumeModule,
   ],
   controllers: [AppController],
   providers: [AppService],

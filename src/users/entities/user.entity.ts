@@ -1,7 +1,9 @@
+import { Resume } from 'src/resume/entities/resume.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -30,6 +32,9 @@ export class User {
     nullable: true,
   })
   refreshToken: string | null;
+
+  @OneToMany(() => Resume, (r) => r.user)
+  resumes: Resume[];
 
   @CreateDateColumn()
   createdAt: Date;
