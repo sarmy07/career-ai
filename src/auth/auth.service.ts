@@ -59,7 +59,7 @@ export class AuthService {
 
     if (!isValid) throw new UnauthorizedException('invalid credentials');
 
-    const { password, ...rest } = user;
+    const { password, refreshToken, ...rest } = user;
 
     const tokens = await this.generateTokens(user);
     await this.updateRefreshTokens(user.id, tokens.refreshToken);

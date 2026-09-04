@@ -1,3 +1,4 @@
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { AuthModule } from './auth/auth.module';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
@@ -12,6 +13,7 @@ import authConfig from './auth/config/auth.config';
 
 @Module({
   imports: [
+    CloudinaryModule,
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: validation,

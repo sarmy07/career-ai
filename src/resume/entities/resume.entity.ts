@@ -21,7 +21,10 @@ export class Resume {
   filename: string;
 
   @Column()
-  filePath: string;
+  fileUrl: string;
+
+  @Column()
+  filePublicId: string;
 
   @Column({
     type: 'enum',

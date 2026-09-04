@@ -5,13 +5,14 @@ https://docs.nestjs.com/controllers#controllers
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
-import { ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { LoginUserDto } from 'src/users/dto/login-user.dto';
 import { CurrentUser } from 'src/common/decorators/current.user.decorator';
 import { User } from 'src/users/entities/user.entity';
 import { RefreshTokenDto } from './dto/refresh.token.dto';
 import { JwtAuthGuard } from './guard/jwt.auth.guard';
 
+@ApiTags('Auth')
 @ApiBearerAuth()
 @Controller()
 export class AuthController {
