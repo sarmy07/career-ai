@@ -3,11 +3,13 @@ import {
   CreateDateColumn,
   Entity,
   ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { ResumeStatus } from '../enums/resume.status.enum';
 import { User } from 'src/users/entities/user.entity';
+import { ResumeAnalysis } from './resume.analysis.entity';
 
 @Entity()
 export class Resume {
@@ -43,6 +45,9 @@ export class Resume {
     onDelete: 'CASCADE',
   })
   user: User;
+
+  @OneToOne(() => ResumeAnalysis, (ra) => ra.resume)
+  analysis: ResumeAnalysis;
 
   @CreateDateColumn()
   createdAt: Date;

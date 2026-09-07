@@ -54,6 +54,11 @@ export class ResumeController {
     return this.resumeService.create(dto, file, user.id);
   }
 
+  @Get('test-ai')
+  testAI() {
+    return this.resumeService.test();
+  }
+
   @Get()
   findAll() {
     return this.resumeService.findAll();
